@@ -2,12 +2,20 @@
   <div class="col-xs-12">
     <h1>Detalles Usuario</h1>
     <hr>
-    Nombre:<label></label>
-    Apellidos:<label></label>
-    Email:<label></label>
-    Localidad:<label></label>
-    <label></label>
-    <label></label>
+    <form>
+      Nombre:<label></label>
+      Apellidos:<label></label>
+      Email:<label></label>
+      Localidad:<label></label>
+      <label></label>
+      <label></label>
+
+
+    </form>
+    <input type="text" #input>
+    <button type="submit" (click)="createItem(input.value)">Add Item</button>
+
+
 
     <button>Log Out</button>
   </div>
