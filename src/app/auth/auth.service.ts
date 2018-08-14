@@ -2,47 +2,27 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {Item} from './item';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
   token: string;
 
-
-  items: AngularFireList<Item[]> = null;
   userId: string;
   user;
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router) {
     // Get the user id of the current auth user
-    this.user = this.afAuth.user;
     this.afAuth.authState.subscribe(
       user => {
         if(user){
           this.userId = user.uid;
+          this.user = user;
         }
       }
     )
-  }
-
-  //Get items of the auth user
-  getItemsList(): AngularFireList<Item[]>{
-    if (!this.userId){
-      return null;
-    }
-    else{
-      this.items = this.db.list(`items/`)
-      return this.items;
-    }
-  }
-
-  //Create new item
-  createItem(item: Item){
-    item.userId = this.userId;
-    this.items.push([item]);
   }
 
   getUserId(){
@@ -53,10 +33,11 @@ export class AuthService {
     return this.user;
   }
 
-
-
-
-
+  signOut(){
+    this.afAuth.auth.signOut().then(
+      () => this.router.navigate([''])
+    );
+  }
 
 
   signupUser(email: string, password: string){
@@ -70,14 +51,16 @@ export class AuthService {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         response => {
+          this.router.navigate(['/user-details']);
           firebase.auth().currentUser.getIdToken()
             .then(
               (token: string) => this.token = token
             )
+
         }
       )
       .catch(
-        error => console.log(error)
+        error => alert(error.message + '\n Test mail: test@test.com \n Test pass: testtest')
       );
   }
 

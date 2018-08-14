@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
@@ -9,6 +9,18 @@ import {FormsModule} from '@angular/forms';
 import {AuthService} from './auth/auth.service';
 import {RouterModule} from '@angular/router';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
+import { AngularFireModule} from 'angularfire2';
+import { AngularFireAuthModule} from 'angularfire2/auth';
+
+export const firebaseCredentials = {
+  apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
+  authDomain: 'emepe-2b333.firebaseapp.com',
+  databaseURL: 'https://emepe-2b333.firebaseio.com',
+  projectId: 'emepe-2b333',
+  storageBucket: 'emepe-2b333.appspot.com',
+  messagingSenderId: '954245660505'
+};
 
 @NgModule({
   declarations: [
@@ -21,7 +33,10 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    AngularFireModule.initializeApp(firebaseCredentials),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

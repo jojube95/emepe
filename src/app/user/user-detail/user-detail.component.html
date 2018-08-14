@@ -1,22 +1,57 @@
 <div class="row">
   <div class="col-xs-12">
     <h1>Detalles Usuario</h1>
-    <hr>
-    <form>
-      Nombre:<label></label>
-      Apellidos:<label></label>
-      Email:<label></label>
-      Localidad:<label></label>
-      <label></label>
-      <label></label>
 
 
-    </form>
-    <input type="text" #input>
-    <button type="submit" (click)="createItem(input.value)">Add Item</button>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Valor</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Nombre</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>Apellidos</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>País</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>Localidad</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>Teléfono</td>
+        <td></td>
+
+      </tr>
+      <tr>
+        <td>Fecha nacimiento</td>
+        <td></td>
+
+      </tr>
+
+      </tbody>
+    </table>
 
 
-
-    <button>Log Out</button>
+    <button type="button" class="btn btn-primary" (click)="logOut()">Log Out</button>
   </div>
 </div>

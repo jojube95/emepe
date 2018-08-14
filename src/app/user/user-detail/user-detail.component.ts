@@ -9,21 +9,14 @@ import {AngularFireList} from 'angularfire2/database';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  items: AngularFireList<Item[]> = null;
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  createItem(body: string){
-    console.log(body);
-    console.log(this.authService.getUser());
-    console.log(this.authService.getUserId());
-    this.authService.createItem(new Item(body))
-  }
 
-  getItems(){
-    this.items = this.authService.getItemsList();
+  logOut(){
+    this.authService.signOut();
   }
 
 }

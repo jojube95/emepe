@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes} from '@angular/router';
 import { SignUpComponent} from './auth/sign-up/sign-up.component';
 import {SignInComponent} from './auth/sign-in/sign-in.component';
+import {UserDetailComponent} from './user/user-detail/user-detail.component';
 
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/signIn', pathMatch: 'full'},
+    { path: 'user-details', component: UserDetailComponent},
     { path : 'signUp', component: SignUpComponent},
     { path : 'signIn', component: SignInComponent}
   ];
