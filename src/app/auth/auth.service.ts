@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {Router} from '@angular/router';
+import {FirebaseObjectObservable} from 'angularfire2/database-deprecated';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AuthService {
 
   userId: string;
   user;
+
 
   constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router) {
     // Get the user id of the current auth user
@@ -42,6 +44,17 @@ export class AuthService {
 
   signupUser(email: string, password: string){
     firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(
+        user => {
+          console.log(user);
+          firebase.database().ref('/users').push({
+            email: user.user.email
+
+          });
+
+
+        }
+      )
       .catch(
         error => console.log(error)
       );
