@@ -5,12 +5,14 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import {Router} from '@angular/router';
 import {UserModel} from '../shared/userModel';
 import {AngularFireModule} from 'angularfire2';
+import {DateUtilities} from '../utilities/date-utilities';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   token: string;
+  dateUtilities: DateUtilities = new DateUtilities();
 
   constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router, private af: AngularFireModule) {
 
@@ -29,7 +31,18 @@ export class AuthService {
       .then(
         user => {
           userObj.setUserId(user.user.uid);
-          firebase.database().ref().child("users").child(user.user.uid).set(userObj);
+          firebase.database().ref().child("users").child(user.user.uid).set({
+            uid: userObj.uid,
+            username: userObj.username,
+            mail: userObj.mail,
+            password: userObj.password,
+            name: userObj.name,
+            secondName: userObj.secondName,
+            phone: userObj.phone,
+            birthday: this.dateUtilities.dateToString(userObj.birthday),
+            country: userObj.country,
+            location: userObj.location
+          });
           this.signinUser(userObj.mail, userObj.password);
         }
       )

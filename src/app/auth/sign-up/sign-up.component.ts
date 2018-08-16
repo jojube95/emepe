@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {UserModel} from '../../shared/userModel';
+import { DateUtilities} from '../../utilities/date-utilities';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,9 +17,11 @@ export class SignUpComponent implements OnInit {
   }
 
   onSignup(form: NgForm){
+    let dateUtilities = new DateUtilities();
+
     const user = new UserModel(form.value.username, form.value.email,
       form.value.password, form.value.name, form.value.secondName,
-      form.value.phone, form.value.birthday, form.value.country,
+      form.value.phone, dateUtilities.stringToDate(form.value.birthday), form.value.country,
       form.value.location);
 
     this.authService.signupUser(user);

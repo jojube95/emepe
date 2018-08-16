@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 import {CommonModule} from '@angular/common';
+import {BsDatepickerModule} from 'ngx-bootstrap';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -38,7 +39,8 @@ export const firebaseCredentials = {
     AngularFireModule.initializeApp(firebaseCredentials),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    CommonModule
+    CommonModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
