@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../auth/auth.service';
+import {DataStorageService} from '../../shared/data-storage.service';
+import {User} from 'firebase';
+import {UserModel} from '../../shared/userModel';
 
 @Component({
   selector: 'app-user-detail',
@@ -7,9 +10,19 @@ import {AuthService} from '../../auth/auth.service';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  constructor(private authService: AuthService) { }
+  loading = true;
+  userAuth: User;
+  userLogged: UserModel;
+
+  constructor(private authService: AuthService, private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
+    this.userAuth = this.authService.getCurrentUser();
+
+    this.dataStorageService.getObservableUsers().subscribe(users => {
+      this.userLogged = users.find(i => i.uid === this.userAuth.uid)
+      this.loading = false;
+    })
   }
 
 

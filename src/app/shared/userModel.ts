@@ -1,5 +1,5 @@
-export class User {
-  id: string;
+export class UserModel {
+  uid: string;
   username: string;
   mail: string;
   password: string;
@@ -24,6 +24,6 @@ export class User {
   }
 
   setUserId(userId: string){
-    this.id = userId;
+    this.uid = userId;
   }
 }

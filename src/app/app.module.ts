@@ -12,6 +12,7 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule} from 'angularfire2/auth';
+import {CommonModule} from '@angular/common';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -36,7 +37,8 @@ export const firebaseCredentials = {
     RouterModule,
     AngularFireModule.initializeApp(firebaseCredentials),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    CommonModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
