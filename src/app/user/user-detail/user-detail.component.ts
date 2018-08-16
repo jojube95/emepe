@@ -22,7 +22,8 @@ export class UserDetailComponent implements OnInit {
     this.userAuth = this.authService.getCurrentUser();
 
     this.dataStorageService.getObservableUsers().subscribe(users => {
-      this.userLogged = users.find(i => i.uid === this.userAuth.uid)
+      this.userLogged = users.find(i => i.uid === this.userAuth.uid);
+      this.userLogged.birthdayDate = this.dateUtilities.stringToDate(this.userLogged.birthday);
       this.loading = false;
     })
   }

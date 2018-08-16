@@ -10,20 +10,26 @@ export class DateUtilities {
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
-    console.log(date);
     let values: string[] = date.toString().split(' ');
-    console.log(values);
-    let dateString = values[2]+'/'+monthNames.indexOf(values[1])+'/'+values[3];
+    let month = monthNames.indexOf(values[1]) < 10 ?  '0' + monthNames.indexOf(values[1]) : monthNames.indexOf(values[1]);
+    let dateString = values[2]+ '/' + month + '/'+values[3];
     return dateString;
   }
 
   stringToDate(dateString: string) {
+    let values: string[] = dateString.toString().split('/');
+    let date: Date = new Date(Number(values[2]), Number(values[0]) - 1, Number(values[1]));
+    return date;
+  }
+
+  stringFormToDate(dateString: string) {
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
 
     let values: string[] = dateString.toString().split(' ');
-    let date: Date = new Date(Number(values[3]), monthNames.indexOf(values[1]), Number(values[2]), 0, 0, 0, 0);
+
+    let date: Date = new Date(Number(values[3]), monthNames.indexOf(values[1]) + 1, Number(values[2]));
     return date;
   }
 

@@ -39,7 +39,7 @@ export class AuthService {
             name: userObj.name,
             secondName: userObj.secondName,
             phone: userObj.phone,
-            birthday: this.dateUtilities.dateToString(userObj.birthday),
+            birthday: this.dateUtilities.dateToString(userObj.birthdayDate),
             country: userObj.country,
             location: userObj.location
           });

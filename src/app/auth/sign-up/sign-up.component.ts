@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
 
     const user = new UserModel(form.value.username, form.value.email,
       form.value.password, form.value.name, form.value.secondName,
-      form.value.phone, dateUtilities.stringToDate(form.value.birthday), form.value.country,
+      form.value.phone, dateUtilities.stringFormToDate(form.value.birthday), form.value.country,
       form.value.location);
 
     this.authService.signupUser(user);

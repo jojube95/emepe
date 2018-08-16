@@ -6,19 +6,20 @@ export class UserModel {
   name: string;
   secondName: string;
   phone: number;
-  birthday: Date;
+  birthdayDate: Date;
+  birthday: string;
   country: string;
   location: string;
 
 
-  constructor(username: string, mail: string, password: string, name: string, secondName: string, phone: number, birthday: Date, country: string, location: string) {
+  constructor(username: string, mail: string, password: string, name: string, secondName: string, phone: number, birthdayDate: Date, country: string, location: string) {
     this.username = username;
     this.mail = mail;
     this.password = password;
     this.name = name;
     this.secondName = secondName;
     this.phone = phone;
-    this.birthday = birthday;
+    this.birthdayDate= birthdayDate;
     this.country = country;
     this.location = location;
   }
