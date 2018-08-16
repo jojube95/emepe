@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
-import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
+import {AngularFireDatabase} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {Router} from '@angular/router';
-import {FirebaseObjectObservable} from 'angularfire2/database-deprecated';
+import {User} from '../shared/user';
+import {AngularFireModule} from 'angularfire2';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +13,19 @@ export class AuthService {
   token: string;
 
   userId: string;
-  user;
+  user: User;
 
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router) {
+  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router, private af: AngularFireModule) {
     // Get the user id of the current auth user
-    this.afAuth.authState.subscribe(
-      user => {
-        if(user){
-          this.userId = user.uid;
-          this.user = user;
-        }
-      }
-    )
+    // this.afAuth.authState.subscribe(
+    //   user => {
+    //     if(user){
+    //       this.userId = user.uid;
+    //       this.user = user;
+    //     }
+    //   }
+    // )
   }
 
   getUserId(){
@@ -42,17 +43,14 @@ export class AuthService {
   }
 
 
-  signupUser(email: string, password: string){
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+  signupUser(userObj: User){
+    firebase.auth().createUserWithEmailAndPassword(userObj.mail, userObj.password)
       .then(
         user => {
-          console.log(user);
-          firebase.database().ref('/users').push({
-            email: user.user.email
-
-          });
-
-
+          firebase.database().ref().child("users").child(user.user.uid).set(userObj);
+          userObj.setUserId(user.user.uid);
+          this.user = userObj;
+          this.signinUser(userObj.mail, userObj.password);
         }
       )
       .catch(
@@ -67,10 +65,18 @@ export class AuthService {
           this.router.navigate(['/user-details']);
           firebase.auth().currentUser.getIdToken()
             .then(
-              (token: string) => this.token = token
-            )
+              (token: string) => this.token = token,
 
-        }
+            );
+
+          //Get the current user form DB
+          const shit = this.db.object('/users' + response.user.uid);
+          console.log(shit);
+
+        },
+
+
+
       )
       .catch(
         error => alert(error.message + '\n Test mail: test@test.com \n Test pass: testtest')
