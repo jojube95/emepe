@@ -15,6 +15,7 @@ import { AngularFireAuthModule} from 'angularfire2/auth';
 import {CommonModule} from '@angular/common';
 import {BsDatepickerModule} from 'ngx-bootstrap';
 import { CompareValidatorDirective } from './utilities/compare-validator.directive';
+import {AuthGuard} from './auth/auth.guard';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -44,7 +45,7 @@ export const firebaseCredentials = {
     CommonModule,
     BsDatepickerModule.forRoot(),
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

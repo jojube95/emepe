@@ -81,4 +81,9 @@ export class AuthService {
   getCurrentUser() {
     return this.afAuth.auth.currentUser;
   }
+
+  isAuthenticated() {
+    console.log(this.token != null);
+    return this.token != null;
+  }
 }
