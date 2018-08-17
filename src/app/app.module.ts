@@ -14,6 +14,7 @@ import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 import {CommonModule} from '@angular/common';
 import {BsDatepickerModule} from 'ngx-bootstrap';
+import { CompareValidatorDirective } from './utilities/compare-validator.directive';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -29,7 +30,8 @@ export const firebaseCredentials = {
     AppComponent,
     SignInComponent,
     SignUpComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    CompareValidatorDirective
   ],
   imports: [
     BrowserModule,

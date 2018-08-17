@@ -1,14 +1,12 @@
 <div class="row">
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
 
-
-
     <h1>Register</h1>
     <hr>
     <form (ngSubmit)="onSignup(f)" #f="ngForm">
       
       <div class="form-group">
-        <label for="username">Username</label>
+        <label>Username</label>
         <input type="username" id="username" name="username" ngModel #username="ngModel" class="form-control" required minlength="8">
         <span class="help-block" *ngIf="!username.valid && username.touched">Username must have more than 8 characters!</span>
       </div>
@@ -20,50 +18,58 @@
       </div>
 
       <div class="form-group">
-        <label for="password">Password</label>
+        <label>Password</label>
         <input type="password" id="password" name="password" #password="ngModel" ngModel class="form-control" minlength="8" required>
         <span class="help-block" *ngIf="!password.valid && password.touched">Password must have more than 8 characters!</span>
       </div>
 
       <div class="form-group">
-        <label for="name">Name</label>
+        <label>Confirm Password</label>
+        <input type="password" id="confPassword" name="confPassword" #confPassword="ngModel" ngModel class="form-control" minlength="8" required compare="password">
+        <div class="text-danger" *ngIf="confPassword.invalid && ( confPassword.dirty || confPassword.touched)">
+          <div *ngIf="confPassword.errors['required']">Password confirm is required</div>
+          <div *ngIf="!confPassword.errors['required'] && confPassword.errors['compare']">Password confirm do not match</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Name</label>
         <input type="name" id="name" name="name" #name="ngModel" ngModel class="form-control" required>
         <span class="help-block" *ngIf="!name.valid && name.touched">Please enter a name!</span>
       </div>
 
       <div class="form-group">
-        <label for="secondName">Second name</label>
+        <label>Second name</label>
         <input type="secondName" id="secondName" name="secondName" #secondName="ngModel" ngModel class="form-control" required>
         <span class="help-block" *ngIf="!secondName.valid && secondName.touched">Please enter a second name!</span>
       </div>
 
       <div class="form-group">
-        <label for="phone">Phone</label>
+        <label>Phone</label>
         <input type="phone" id="phone" name="phone" #phone="ngModel" ngModel class="form-control" minlength="9" pattern="^[0-9]*$" required>
         <span class="help-block" *ngIf="!phone.valid && phone.touched">Please enter a valid phone!</span>
       </div>
 
       <div class="form-group">
-        <label for="birthday">Birthday</label>
+        <label>Birthday</label>
         <input type="text" id="birthday" name="birthday" #birthday="ngModel" bsDatepicker ngModel [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" class="form-control" required>
         <span class="help-block" *ngIf="!birthday.valid && birthday.touched">Please enter a valid date!</span>
       </div>
 
       <div class="form-group">
-        <label for="country">Country</label>
+        <label>Country</label>
         <input type="country" id="country" name="country" #country="ngModel" ngModel class="form-control" required>
         <span class="help-block" *ngIf="!country.valid && country.touched">Please enter a country!</span>
       </div>
 
       <div class="form-group">
-        <label for="location">Location</label>
+        <label>Location</label>
         <input type="location" id="location" name="location" #location="ngModel" ngModel class="form-control" required>
         <span class="help-block" *ngIf="!location.valid && location.touched">Please enter a location!</span>
       </div>
 
       <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Register</button>
       <a routerLink="/signIn"><button type="button" class="btn" routerLinkActive="active">Back</button></a>
-
 
     </form>
   </div>
