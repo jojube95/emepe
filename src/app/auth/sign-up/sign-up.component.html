@@ -9,50 +9,59 @@
       
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="username" id="username" name="username" ngModel class="form-control">
+        <input type="username" id="username" name="username" ngModel #username="ngModel" class="form-control" required minlength="8">
+        <span class="help-block" *ngIf="!username.valid && username.touched">Username must have more than 8 characters!</span>
       </div>
 
       <div class="form-group">
         <label for="email">Mail</label>
-        <input type="email" id="email" name="email" ngModel class="form-control">
+        <input type="email" id="email" name="email" #email="ngModel" ngModel class="form-control" required email>
+        <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" ngModel class="form-control">
+        <input type="password" id="password" name="password" #password="ngModel" ngModel class="form-control" minlength="8" required>
+        <span class="help-block" *ngIf="!password.valid && password.touched">Password must have more than 8 characters!</span>
       </div>
 
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="name" id="name" name="name" ngModel class="form-control">
+        <input type="name" id="name" name="name" #name="ngModel" ngModel class="form-control" required>
+        <span class="help-block" *ngIf="!name.valid && name.touched">Please enter a name!</span>
       </div>
 
       <div class="form-group">
         <label for="secondName">Second name</label>
-        <input type="secondName" id="secondName" name="secondName" ngModel class="form-control">
+        <input type="secondName" id="secondName" name="secondName" #secondName="ngModel" ngModel class="form-control" required>
+        <span class="help-block" *ngIf="!secondName.valid && secondName.touched">Please enter a second name!</span>
       </div>
 
       <div class="form-group">
         <label for="phone">Phone</label>
-        <input type="phone" id="phone" name="phone" ngModel class="form-control">
+        <input type="phone" id="phone" name="phone" #phone="ngModel" ngModel class="form-control" minlength="9" pattern="^[0-9]*$" required>
+        <span class="help-block" *ngIf="!phone.valid && phone.touched">Please enter a valid phone!</span>
       </div>
 
       <div class="form-group">
         <label for="birthday">Birthday</label>
-        <input type="text" id="birthday" name="birthday" bsDatepicker ngModel [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" class="form-control">
+        <input type="text" id="birthday" name="birthday" #birthday="ngModel" bsDatepicker ngModel [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }" class="form-control" required>
+        <span class="help-block" *ngIf="!birthday.valid && birthday.touched">Please enter a valid date!</span>
       </div>
 
       <div class="form-group">
         <label for="country">Country</label>
-        <input type="country" id="country" name="country" ngModel class="form-control">
+        <input type="country" id="country" name="country" #country="ngModel" ngModel class="form-control" required>
+        <span class="help-block" *ngIf="!country.valid && country.touched">Please enter a country!</span>
       </div>
 
       <div class="form-group">
         <label for="location">Location</label>
-        <input type="location" id="location" name="location" ngModel class="form-control">
+        <input type="location" id="location" name="location" #location="ngModel" ngModel class="form-control" required>
+        <span class="help-block" *ngIf="!location.valid && location.touched">Please enter a location!</span>
       </div>
 
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Register</button>
       <a routerLink="/signIn"><button type="button" class="btn" routerLinkActive="active">Back</button></a>
 
 

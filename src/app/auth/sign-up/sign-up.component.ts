@@ -17,6 +17,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSignup(form: NgForm){
+    console.log(form);
     let dateUtilities = new DateUtilities();
 
     const user = new UserModel(form.value.username, form.value.email,
