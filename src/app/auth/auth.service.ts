@@ -41,7 +41,8 @@ export class AuthService {
             phone: userObj.phone,
             birthday: this.dateUtilities.dateToString(userObj.birthdayDate),
             country: userObj.country,
-            location: userObj.location
+            location: userObj.location,
+            pic: userObj.pic
           });
           this.signinUser(userObj.mail, userObj.password);
         }

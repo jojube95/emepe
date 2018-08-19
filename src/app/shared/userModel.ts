@@ -10,9 +10,10 @@ export class UserModel {
   birthday: string;
   country: string;
   location: string;
+  pic: string;
 
 
-  constructor(username: string, mail: string, password: string, name: string, secondName: string, phone: number, birthdayDate: Date, country: string, location: string) {
+  constructor(username: string, mail: string, password: string, name: string, secondName: string, phone: number, birthdayDate: Date, country: string, location: string, pic: string) {
     this.username = username;
     this.mail = mail;
     this.password = password;
@@ -22,6 +23,7 @@ export class UserModel {
     this.birthdayDate= birthdayDate;
     this.country = country;
     this.location = location;
+    this.pic = pic;
   }
 
   setUserId(userId: string){
