@@ -3,7 +3,7 @@ import { NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
-import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { SignUpComponent } from './user/sign-up-user/sign-up.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, NgForm} from '@angular/forms';
 import {AuthService} from './auth/auth.service';
@@ -16,6 +16,8 @@ import {CommonModule} from '@angular/common';
 import {BsDatepickerModule} from 'ngx-bootstrap';
 import { CompareValidatorDirective } from './utilities/compare-validator.directive';
 import {AuthGuard} from './auth/auth.guard';
+import { RestaurantDetailComponent } from './restaurant/restaurant-detail/restaurant-detail.component';
+import { SingUpRestaurantComponent } from './restaurant/sing-up-restaurant/sing-up-restaurant.component';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -32,7 +34,9 @@ export const firebaseCredentials = {
     SignInComponent,
     SignUpComponent,
     UserDetailComponent,
-    CompareValidatorDirective
+    CompareValidatorDirective,
+    RestaurantDetailComponent,
+    SingUpRestaurantComponent
   ],
   imports: [
     BrowserModule,

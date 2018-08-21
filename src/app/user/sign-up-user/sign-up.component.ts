@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../../auth/auth.service';
 import {UserModel} from '../../shared/userModel';
 import { DateUtilities} from '../../utilities/date-utilities';
 
