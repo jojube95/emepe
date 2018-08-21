@@ -17,7 +17,7 @@ import {BsDatepickerModule} from 'ngx-bootstrap';
 import { CompareValidatorDirective } from './utilities/compare-validator.directive';
 import {AuthGuard} from './auth/auth.guard';
 import { RestaurantDetailComponent } from './restaurant/restaurant-detail/restaurant-detail.component';
-import { SingUpRestaurantComponent } from './restaurant/sing-up-restaurant/sing-up-restaurant.component';
+import { SignUpRestaurantComponent } from './restaurant/sign-up-restaurant/sign-up-restaurant.component';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -36,7 +36,7 @@ export const firebaseCredentials = {
     UserDetailComponent,
     CompareValidatorDirective,
     RestaurantDetailComponent,
-    SingUpRestaurantComponent
+    SignUpRestaurantComponent
   ],
   imports: [
     BrowserModule,
