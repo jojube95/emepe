@@ -9,6 +9,10 @@ export class SignUpRestaurantComponent implements OnInit {
 
   constructor() { }
 
+  onSignup(f){
+
+  }
+
   ngOnInit() {
   }
 
