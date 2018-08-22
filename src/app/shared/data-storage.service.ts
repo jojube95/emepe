@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {AuthService} from '../auth/auth.service';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {Observable} from 'rxjs';
 import {UserModel} from './userModel';
@@ -16,7 +15,7 @@ export class DataStorageService {
   usersObservable: Observable<UserModel[]>;
   restaurantsObservable: Observable<Restaurant[]>
 
-  constructor(private authService: AuthService, private af: AngularFireDatabase) {
+  constructor(private af: AngularFireDatabase) {
     this.usersRef = this.af.list('users');
     this.usersObservable = this.usersRef.snapshotChanges().pipe(
       map(changes =>

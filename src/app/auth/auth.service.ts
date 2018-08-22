@@ -7,6 +7,7 @@ import {UserModel} from '../shared/userModel';
 import {AngularFireModule} from 'angularfire2';
 import {DateUtilities} from '../utilities/date-utilities';
 import {Restaurant} from '../shared/restaurant';
+import {DataStorageService} from '../shared/data-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class AuthService {
   token: string;
   dateUtilities: DateUtilities = new DateUtilities();
 
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router, private af: AngularFireModule) {
+  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth, private router: Router, private af: AngularFireModule,
+              private dataStorageService: DataStorageService) {
 
   }
 
@@ -51,6 +53,29 @@ export class AuthService {
       .catch(
         error => console.log(error)
       );
+  }
+
+  signIn(email: string, password: string){
+    let userLogged: UserModel;
+    let restaurantLogged: Restaurant;
+    let logged = false;
+
+    this.dataStorageService.getObservableRestaurants().subscribe(restaurants => {
+      restaurantLogged = restaurants.find(i => i.mail === email);
+      logged = true;
+      if(restaurantLogged){
+        this.signinRestaurant(email, password);
+      }
+    });
+
+    this.dataStorageService.getObservableUsers().subscribe(users => {
+      userLogged = users.find(i => i.mail === email);
+      logged = true;
+      if(userLogged){
+        this.signinUser(email, password);
+      }
+    });
+
   }
 
   singUpRestaurant(restaurant: Restaurant){
