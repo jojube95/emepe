@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {UserModel} from '../shared/userModel';
 import {AngularFireModule} from 'angularfire2';
 import {DateUtilities} from '../utilities/date-utilities';
+import {Restaurant} from '../shared/restaurant';
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,31 @@ export class AuthService {
       );
   }
 
+  singUpRestaurant(restaurant: Restaurant){
+    firebase.auth().createUserWithEmailAndPassword(restaurant.mail, restaurant.password)
+      .then(
+        user => {
+          restaurant.setRestaurantId(user.user.uid);
+          firebase.database().ref().child("restaurants").child(user.user.uid).set({
+            uid: restaurant.uid,
+            mail: restaurant.mail,
+            password: restaurant.password,
+            name: restaurant.name,
+            phone: restaurant.phone,
+            country: restaurant.country,
+            location: restaurant.location,
+            shedule: restaurant.shedule,
+            rating: restaurant.rating,
+            pic: restaurant.pic
+          });
+          this.signinRestaurant(restaurant.mail, restaurant.password);
+        }
+      )
+      .catch(
+        error => console.log(error)
+      );
+  }
+
   signinUser(email: string, password: string){
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
@@ -69,6 +95,24 @@ export class AuthService {
         error => alert(error.message + '\n Test mail: test@test.com \n Test pass: testtest')
       );
 
+  }
+
+  signinRestaurant(email: string, password: string){
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(
+        response => {
+          this.router.navigate(['/restaurant-details']);
+          firebase.auth().currentUser.getIdToken()
+            .then(
+              (token: string) => this.token = token,
+
+            );
+        },
+
+      )
+      .catch(
+        error => alert(error.message + '\n Test mail: test@test.com \n Test pass: testtest')
+      );
   }
 
   getToken(){

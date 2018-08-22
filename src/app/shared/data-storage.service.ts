@@ -4,13 +4,17 @@ import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {Observable} from 'rxjs';
 import {UserModel} from './userModel';
 import {map} from 'rxjs/operators';
+import {Restaurant} from './restaurant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataStorageService {
   usersRef: AngularFireList<any>;
+  restaurantsRef: AngularFireList<any>;
+
   usersObservable: Observable<UserModel[]>;
+  restaurantsObservable: Observable<Restaurant[]>
 
   constructor(private authService: AuthService, private af: AngularFireDatabase) {
     this.usersRef = this.af.list('users');
@@ -19,10 +23,21 @@ export class DataStorageService {
         changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
       )
     );
+
+    this.restaurantsRef = this.af.list('restaurants');
+    this.restaurantsObservable = this.restaurantsRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
+      )
+    );
   }
 
   getObservableUsers() {
     return this.usersObservable;
+  }
+
+  getObservableRestaurants() {
+    return this.restaurantsObservable;
   }
 
 }
