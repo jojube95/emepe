@@ -51,7 +51,7 @@ export class AuthService {
         }
       )
       .catch(
-        error => console.log(error)
+        error => alert(error.message)
       );
   }
 
@@ -99,7 +99,7 @@ export class AuthService {
         }
       )
       .catch(
-        error => console.log(error)
+        error => alert(error.message)
       );
   }
 
@@ -153,7 +153,6 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    console.log(this.token != null);
     return this.token != null;
   }
 }
