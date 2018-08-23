@@ -7,6 +7,7 @@ import { UserDetailComponent} from './user/user-detail/user-detail.component';
 import { AuthGuard} from './auth/auth.guard';
 import { SignUpRestaurantComponent} from './restaurant/sign-up-restaurant/sign-up-restaurant.component'
 import { RestaurantDetailComponent} from './restaurant/restaurant-detail/restaurant-detail.component';
+import {UserMainPageComponent} from './user/user-main-page/user-main-page.component';
 
 
 const appRoutes: Routes = [
@@ -15,7 +16,8 @@ const appRoutes: Routes = [
     { path : 'signUp', component: SignUpComponent},
     { path : 'signIn', component: SignInComponent},
     { path: 'signUpRestaurant', component: SignUpRestaurantComponent},
-    { path: 'restaurant-details', component: RestaurantDetailComponent, canActivate: [AuthGuard]}
+    { path: 'restaurant-details', component: RestaurantDetailComponent, canActivate: [AuthGuard]},
+    { path: 'user', component: UserMainPageComponent, canActivate: [AuthGuard]}
   ];
 
 @NgModule({

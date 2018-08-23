@@ -1,68 +1,49 @@
 <div class="row">
   <div class="col-xs-12">
     <h1>Detalles Usuario</h1>
-
     <div *ngIf="loading">
-
     </div>
-
     <div *ngIf="!loading">
-
       <img [src]="userLogged.pic" alt="">
-
       <table class="table">
         <thead>
         <tr>
           <th>Campo</th>
           <th>Valor</th>
-
         </tr>
         </thead>
         <tbody>
         <tr>
           <td>Nombre</td>
           <td>{{ userLogged.name}}</td>
-
         </tr>
         <tr>
           <td>Apellidos</td>
           <td>{{ userLogged.secondName}}</td>
-
         </tr>
         <tr>
           <td>Email</td>
           <td>{{ userLogged.mail}}</td>
-
         </tr>
         <tr>
           <td>País</td>
           <td>{{ userLogged.country}}</td>
-
         </tr>
         <tr>
           <td>Localidad</td>
           <td>{{ userLogged.location}}</td>
-
         </tr>
         <tr>
           <td>Teléfono</td>
           <td>{{ userLogged.phone}}</td>
-
         </tr>
         <tr>
           <td>Fecha nacimiento</td>
           <td>{{ userLogged.birthday }}</td>
-
         </tr>
-
         </tbody>
       </table>
-
-
     </div>
     <button type="button" class="btn btn-primary" (click)="logOut()">Log Out</button>
-
-
-
   </div>
 </div>

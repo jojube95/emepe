@@ -1,23 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule} from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './user/sign-up-user/sign-up.component';
-import {AppRoutingModule} from './app-routing.module';
-import {FormsModule, NgForm} from '@angular/forms';
-import {AuthService} from './auth/auth.service';
-import {RouterModule} from '@angular/router';
+import { AppRoutingModule} from './app-routing.module';
+import { FormsModule, NgForm} from '@angular/forms';
+import { AuthService} from './auth/auth.service';
+import { RouterModule} from '@angular/router';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule} from 'angularfire2/auth';
-import {CommonModule} from '@angular/common';
-import {BsDatepickerModule} from 'ngx-bootstrap';
+import { CommonModule} from '@angular/common';
+import { BsDatepickerModule} from 'ngx-bootstrap';
 import { CompareValidatorDirective } from './utilities/compare-validator.directive';
-import {AuthGuard} from './auth/auth.guard';
+import { AuthGuard} from './auth/auth.guard';
 import { RestaurantDetailComponent } from './restaurant/restaurant-detail/restaurant-detail.component';
 import { SignUpRestaurantComponent } from './restaurant/sign-up-restaurant/sign-up-restaurant.component';
+import { UserMainPageComponent } from './user/user-main-page/user-main-page.component';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -36,7 +37,8 @@ export const firebaseCredentials = {
     UserDetailComponent,
     CompareValidatorDirective,
     RestaurantDetailComponent,
-    SignUpRestaurantComponent
+    SignUpRestaurantComponent,
+    UserMainPageComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ export const firebaseCredentials = {
     AngularFireAuthModule,
     CommonModule,
     BsDatepickerModule.forRoot(),
+    NgbModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
