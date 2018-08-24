@@ -1,0 +1,43 @@
+<!--<a-->
+  <!--style="cursor: pointer;"-->
+  <!--[routerLink]="[index]"-->
+  <!--routerLinkActive="active"-->
+  <!--class="list-group-item clearfix">-->
+  <!--<div class="pull-left">-->
+    <!--<h4 class="list-group-item-heading">{{ restaurant.name }}</h4>-->
+    <!--<p class="list-group-item-text">{{ restaurant.description }}</p>-->
+  <!--</div>-->
+  <!--<span class="pull-right">-->
+        <!--<img-->
+          <!--[src]="restaurant.pic"-->
+          <!--alt="{{ restaurant.name }}"-->
+          <!--class="img-responsive"-->
+          <!--style="max-height: 50px;">-->
+      <!--</span>-->
+<!--</a>-->
+
+<a style="cursor: pointer;"
+   [routerLink]="[index]"
+   routerLinkActive="active"
+   class="list-group-item clearfix"
+style="padding: 5px 5px 5px 5px">
+
+
+    <div class="card">
+      <div class="row ">
+        <div class="col-md-4">
+          <img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=400%C3%97400&w=400&h=400" class="w-100">
+        </div>
+        <div class="col-md-8 px-3">
+          <div class="card-block px-3">
+            <h4 class="card-title">{{ restaurant.name }}</h4>
+            <p class="card-text">Add category to restaurants.</p>
+            <p class="card-text">{{ restaurant.location}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+</a>

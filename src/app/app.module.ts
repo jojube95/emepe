@@ -19,6 +19,10 @@ import { RestaurantDetailComponent } from './restaurant/restaurant-detail/restau
 import { SignUpRestaurantComponent } from './restaurant/sign-up-restaurant/sign-up-restaurant.component';
 import { UserMainPageComponent } from './user/user-main-page/user-main-page.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RestaurantsComponent } from './user/restaurants/restaurants.component';
+import { RestaurantListComponent } from './user/restaurants/restaurant-list/restaurant-list.component';
+import { RestaurantItemComponent } from './user/restaurants/restaurant-list/restaurant-item/restaurant-item.component';
+import {UserRestaurantDetailComponent} from './user/restaurants/restaurant-detail/user-restaurant-detail.component';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -38,7 +42,12 @@ export const firebaseCredentials = {
     CompareValidatorDirective,
     RestaurantDetailComponent,
     SignUpRestaurantComponent,
-    UserMainPageComponent
+    UserMainPageComponent,
+    RestaurantsComponent,
+    RestaurantListComponent,
+    RestaurantItemComponent,
+    UserRestaurantDetailComponent
+
   ],
   imports: [
     BrowserModule,

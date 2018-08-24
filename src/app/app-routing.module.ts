@@ -8,6 +8,8 @@ import { AuthGuard} from './auth/auth.guard';
 import { SignUpRestaurantComponent} from './restaurant/sign-up-restaurant/sign-up-restaurant.component'
 import { RestaurantDetailComponent} from './restaurant/restaurant-detail/restaurant-detail.component';
 import {UserMainPageComponent} from './user/user-main-page/user-main-page.component';
+import {RestaurantsComponent} from './user/restaurants/restaurants.component';
+import {UserRestaurantDetailComponent} from './user/restaurants/restaurant-detail/user-restaurant-detail.component';
 
 
 const appRoutes: Routes = [
@@ -17,7 +19,12 @@ const appRoutes: Routes = [
     { path : 'signIn', component: SignInComponent},
     { path: 'signUpRestaurant', component: SignUpRestaurantComponent},
     { path: 'restaurant-details', component: RestaurantDetailComponent, canActivate: [AuthGuard]},
-    { path: 'user', component: UserMainPageComponent, canActivate: [AuthGuard]}
+    { path: 'user', component: UserMainPageComponent, canActivate: [AuthGuard], children: [
+        { path: 'restaurants', component: RestaurantsComponent, children: [
+            { path: ':id', component: UserRestaurantDetailComponent },
+          ]}
+      ]},
+
   ];
 
 @NgModule({
