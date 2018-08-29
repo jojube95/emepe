@@ -23,6 +23,7 @@ import { RestaurantsComponent } from './user/restaurants/restaurants.component';
 import { RestaurantListComponent } from './user/restaurants/restaurant-list/restaurant-list.component';
 import { RestaurantItemComponent } from './user/restaurants/restaurant-list/restaurant-item/restaurant-item.component';
 import {UserRestaurantDetailComponent} from './user/restaurants/restaurant-detail/user-restaurant-detail.component';
+import { AccountInformationComponent } from './user/account/account-information/account-information.component';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -46,7 +47,8 @@ export const firebaseCredentials = {
     RestaurantsComponent,
     RestaurantListComponent,
     RestaurantItemComponent,
-    UserRestaurantDetailComponent
+    UserRestaurantDetailComponent,
+    AccountInformationComponent
 
   ],
   imports: [

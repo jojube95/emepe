@@ -10,6 +10,7 @@ import { RestaurantDetailComponent} from './restaurant/restaurant-detail/restaur
 import {UserMainPageComponent} from './user/user-main-page/user-main-page.component';
 import {RestaurantsComponent} from './user/restaurants/restaurants.component';
 import {UserRestaurantDetailComponent} from './user/restaurants/restaurant-detail/user-restaurant-detail.component';
+import {AccountInformationComponent} from './user/account/account-information/account-information.component';
 
 
 const appRoutes: Routes = [
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     { path: 'user', component: UserMainPageComponent, canActivate: [AuthGuard], children: [
         { path: 'restaurants', component: RestaurantsComponent, children: [
             { path: ':id', component: UserRestaurantDetailComponent },
-          ]}
+          ]},
+        { path: 'account', component: AccountInformationComponent, canActivate: [AuthGuard]}
       ]},
 
   ];
