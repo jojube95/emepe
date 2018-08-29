@@ -36,7 +36,7 @@
         <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
           <button class="dropdown-item" routerLink="account" style="cursor: pointer">Información usuario</button>
           <button class="dropdown-item" style="cursor: pointer">Ajustes</button>
-          <button class="dropdown-item" style="cursor: pointer">LogOut</button>
+          <button class="dropdown-item" (click)="logOut()" style="cursor: pointer">LogOut</button>
         </div>
       </div>
 

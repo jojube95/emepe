@@ -28,4 +28,8 @@ export class UserMainPageComponent implements OnInit {
     })
   }
 
+  logOut(){
+    this.authService.signOut();
+  }
+
 }
