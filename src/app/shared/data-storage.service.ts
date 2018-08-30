@@ -31,6 +31,12 @@ export class DataStorageService {
     );
   }
 
+  updateUserProfile(user: UserModel){
+    this.af.object('users/' + user.uid)
+      .update(user);
+
+  }
+
   getObservableUsers() {
     return this.usersObservable;
   }

@@ -29,4 +29,5 @@ export class UserModel {
   setUserId(userId: string){
     this.uid = userId;
   }
+
 }

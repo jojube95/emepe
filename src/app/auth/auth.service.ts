@@ -24,6 +24,7 @@ export class AuthService {
 
   signOut(){
     this.afAuth.auth.signOut().then(
+
       () => this.router.navigate([''])
     );
   }
@@ -47,6 +48,7 @@ export class AuthService {
             location: userObj.location,
             pic: userObj.pic
           });
+          console.log('SignUpUser');
           this.signinUser(userObj.mail, userObj.password);
         }
       )
@@ -71,10 +73,11 @@ export class AuthService {
     this.dataStorageService.getObservableUsers().subscribe(users => {
       userLogged = users.find(i => i.mail === email);
       logged = true;
-      if(userLogged){
-        this.signinUser(email, password);
-      }
+
     });
+
+    this.signinUser(email, password);
+
 
   }
 

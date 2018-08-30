@@ -21,7 +21,6 @@ export class UserRestaurantDetailComponent implements OnInit {
         this.id = +params['id'];
         this.dataStorage.getObservableRestaurants().subscribe( restaurants => {
           this.restaurant = restaurants[this.id];
-          console.log(this.restaurant);
           this.loading = false;
         });
       }

@@ -5,11 +5,13 @@ import {DateUtilities} from '../../../../utilities/date-utilities';
 import {AuthService} from '../../../../auth/auth.service';
 import {DataStorageService} from '../../../../shared/data-storage.service';
 import {NgForm} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-account-profile-settings',
   templateUrl: './account-profile-settings.component.html',
-  styleUrls: ['./account-profile-settings.component.css']
+  styleUrls: ['./account-profile-settings.component.css'],
+
 })
 export class AccountProfileSettingsComponent implements OnInit {
   loading = true;
@@ -17,7 +19,8 @@ export class AccountProfileSettingsComponent implements OnInit {
   userLogged: UserModel;
   dateUtilities: DateUtilities = new DateUtilities();
 
-  constructor(private authService: AuthService, private dataStorageService: DataStorageService) { }
+  constructor(private authService: AuthService, private dataStorageService: DataStorageService, private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.userAuth = this.authService.getCurrentUser();
@@ -29,19 +32,23 @@ export class AccountProfileSettingsComponent implements OnInit {
     })
   }
 
-  onSignup(form: NgForm){
-    // let dateUtilities = new DateUtilities();
-    //
-    // const user = new UserModel(form.value.username, form.value.email,
-    //   form.value.password, form.value.name, form.value.secondName,
-    //   form.value.phone, dateUtilities.stringFormToDate(form.value.birthday), form.value.country,
-    //   form.value.location, this.url);
-    //
-    // this.authService.signupUser(user);
+  onUpdate(form: NgForm){
+    let dateUtilities = new DateUtilities();
 
-    //Update user on database
-    //Search the user with the logged email in database
-    //Update user
+    this.userLogged.username = form.value.username;
+    this.userLogged.name = form.value.name;
+    this.userLogged.secondName = form.value.secondName;
+    this.userLogged.phone = form.value.phone;
+    this.userLogged.birthday = form.value.birthday;
+    this.userLogged.birthdayDate = dateUtilities.stringFormToDate(form.value.birthday);
+    this.userLogged.country = form.value.country;
+    this.userLogged.location = form.value.location;
+
+    this.dataStorageService.updateUserProfile(this.userLogged);
+    this.router.navigate(['../../account'], {relativeTo: this.route});
+
+
+
   }
 
   onSelectFile(event) { // called each time file input changes
