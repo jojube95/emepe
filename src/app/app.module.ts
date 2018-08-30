@@ -7,7 +7,6 @@ import { AppRoutingModule} from './app-routing.module';
 import { FormsModule, NgForm} from '@angular/forms';
 import { AuthService} from './auth/auth.service';
 import { RouterModule} from '@angular/router';
-import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule} from 'angularfire2/auth';
@@ -24,6 +23,10 @@ import { RestaurantListComponent } from './user/restaurants/restaurant-list/rest
 import { RestaurantItemComponent } from './user/restaurants/restaurant-list/restaurant-item/restaurant-item.component';
 import {UserRestaurantDetailComponent} from './user/restaurants/restaurant-detail/user-restaurant-detail.component';
 import { AccountInformationComponent } from './user/account/account-information/account-information.component';
+import { AccountSettingsComponent } from './user/account/account-settings/account-settings.component';
+import { AccountProfileSettingsComponent } from './user/account/account-settings/account-profile-settings/account-profile-settings.component';
+import { AccountEmailSettingsComponent } from './user/account/account-settings/account-email-settings/account-email-settings.component';
+import { AccountPasswordSettingsComponent } from './user/account/account-settings/account-password-settings/account-password-settings.component';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -39,7 +42,6 @@ export const firebaseCredentials = {
     AppComponent,
     SignInComponent,
     SignUpComponent,
-    UserDetailComponent,
     CompareValidatorDirective,
     RestaurantDetailComponent,
     SignUpRestaurantComponent,
@@ -48,7 +50,11 @@ export const firebaseCredentials = {
     RestaurantListComponent,
     RestaurantItemComponent,
     UserRestaurantDetailComponent,
-    AccountInformationComponent
+    AccountInformationComponent,
+    AccountSettingsComponent,
+    AccountProfileSettingsComponent,
+    AccountEmailSettingsComponent,
+    AccountPasswordSettingsComponent
 
   ],
   imports: [
