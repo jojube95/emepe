@@ -19,7 +19,7 @@ export class SignUpRestaurantComponent implements OnInit {
 
     const restaurant = new Restaurant(form.value.email, form.value.password, form.value.name,
       form.value.phone, form.value.country, form.value.location, form.value.description,
-      '', 0.0, this.url);
+      '', 0.0, [], this.url);
 
     this.authService.singUpRestaurant(restaurant);
   }

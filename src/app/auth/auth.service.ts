@@ -48,7 +48,6 @@ export class AuthService {
             location: userObj.location,
             pic: userObj.pic
           });
-          console.log('SignUpUser');
           this.signinUser(userObj.mail, userObj.password);
         }
       )

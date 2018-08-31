@@ -5,6 +5,7 @@ import {UserModel} from './userModel';
 import {map} from 'rxjs/operators';
 import {Restaurant} from './restaurant';
 import {Category} from './category';
+import {FirebaseListObservable} from 'angularfire2/database-deprecated';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,9 @@ export class DataStorageService {
   categoriesObservable: Observable<Category[]>;
 
   categoriesList: Category[];
+  restaurantList: Restaurant[];
+
+  categories: Observable<any[]>;
 
   constructor(private af: AngularFireDatabase) {
     this.usersRef = this.af.list('users');
@@ -42,8 +46,15 @@ export class DataStorageService {
       )
     );
 
-    this.categoriesObservable.subscribe( categories => {
+
+    this.categories = af.list('categories').valueChanges();
+
+    this.categories.subscribe( categories => {
       this.categoriesList = categories as Category[];
+    });
+
+    this.restaurantsObservable.subscribe( restaurants => {
+      this.restaurantList = restaurants as Restaurant[];
     });
   }
 
@@ -63,6 +74,10 @@ export class DataStorageService {
 
   getCategoriesList(){
     return this.categoriesList;
+  }
+
+  getRestaurantList(){
+    return this.restaurantList;
   }
 
 }

@@ -1,10 +1,9 @@
 export class Category {
-  uid: string;
-  type: string;
+  value: string;
+  // key: string;
 
 
-  constructor(uid: string, type: string) {
-    this.uid = uid;
-    this.type = type;
+  constructor(value: string) {
+    this.value = value;
   }
 }

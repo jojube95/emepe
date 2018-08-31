@@ -1,3 +1,5 @@
+import {Category} from './category';
+
 export class Restaurant {
   uid: string;
   mail: string;
@@ -9,10 +11,11 @@ export class Restaurant {
   description: string;
   shedule: string;
   rating: number;
+  categories: Category[];
   pic: string;
 
 
-  constructor(mail: string, password: string, name: string, phone: number, country: string, location: string, description: string, shedule: string, rating: number, pic: string) {
+  constructor(mail: string, password: string, name: string, phone: number, country: string, location: string, description: string, shedule: string, rating: number, categoires: Category[], pic: string) {
     this.mail = mail;
     this.password = password;
     this.name = name;
@@ -22,6 +25,7 @@ export class Restaurant {
     this.description = description;
     this.shedule = shedule;
     this.rating = rating;
+    this.categories = categoires;
     this.pic = pic;
   }
 

@@ -6,7 +6,7 @@
 
       <li *ngFor="let category of categoriesList" class="nav-item">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optradio">{{category.type}}
+          <input type="radio" class="form-check-input" name="optradio" (change)="onSelectRadioButton(category)">{{category}}
         </label>
       </li>
 
@@ -40,5 +40,5 @@
 
 
 <div class="col-9 float-left">
-  <app-restaurant-list></app-restaurant-list>
+  <app-restaurant-list [restaurantList]="restaurantList"></app-restaurant-list>
 </div>
