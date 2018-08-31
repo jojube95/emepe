@@ -1,0 +1,44 @@
+<div class="d-flex flex-column">
+  <div class="col-4 float-left pr-4" role="navigation">
+    <ul class="nav nav-pills flex-column">
+      <h3>Tipo de comida</h3>
+
+
+      <li *ngFor="let category of categoriesList" class="nav-item">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optradio">{{category.type}}
+        </label>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="col-4 float-left pr-4" role="navigation">
+    <ul class="nav nav-pills flex-column">
+      <h3>Filtrar</h3>
+      <li class="nav-item">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" value="">Option 1
+        </label>
+      </li>
+      <li class="nav-item">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" value="">Option 1
+        </label>
+      </li>
+      <li class="nav-item">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" value="">Option 1
+        </label>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+
+
+
+<div class="col-9 float-left">
+  <app-restaurant-list></app-restaurant-list>
+</div>

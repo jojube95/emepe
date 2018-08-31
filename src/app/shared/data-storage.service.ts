@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {UserModel} from './userModel';
 import {map} from 'rxjs/operators';
 import {Restaurant} from './restaurant';
+import {Category} from './category';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,13 @@ import {Restaurant} from './restaurant';
 export class DataStorageService {
   usersRef: AngularFireList<any>;
   restaurantsRef: AngularFireList<any>;
+  categoriesRef: AngularFireList<any>;
 
   usersObservable: Observable<UserModel[]>;
-  restaurantsObservable: Observable<Restaurant[]>
+  restaurantsObservable: Observable<Restaurant[]>;
+  categoriesObservable: Observable<Category[]>;
+
+  categoriesList: Category[];
 
   constructor(private af: AngularFireDatabase) {
     this.usersRef = this.af.list('users');
@@ -29,6 +34,17 @@ export class DataStorageService {
         changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
       )
     );
+
+    this.categoriesRef = this.af.list('categories');
+    this.categoriesObservable = this.categoriesRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
+      )
+    );
+
+    this.categoriesObservable.subscribe( categories => {
+      this.categoriesList = categories as Category[];
+    });
   }
 
   updateUserProfile(user: UserModel){
@@ -43,6 +59,10 @@ export class DataStorageService {
 
   getObservableRestaurants() {
     return this.restaurantsObservable;
+  }
+
+  getCategoriesList(){
+    return this.categoriesList;
   }
 
 }

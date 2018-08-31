@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Restaurant} from '../../../shared/restaurant';
-import {DataStorageService} from '../../../shared/data-storage.service';
+import {Restaurant} from '../../../../shared/restaurant';
+import {DataStorageService} from '../../../../shared/data-storage.service';
 
 @Component({
   selector: 'app-restaurant-list',

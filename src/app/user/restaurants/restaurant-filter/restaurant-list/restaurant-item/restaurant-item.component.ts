@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Restaurant} from '../../../../shared/restaurant';
+import {Restaurant} from '../../../../../shared/restaurant';
 
 @Component({
   selector: 'app-restaurant-item',
