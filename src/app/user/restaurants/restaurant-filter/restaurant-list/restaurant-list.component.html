@@ -1,6 +1,12 @@
 <div class="row">
   <div class="col-xs-12">
-    <input type="text" class="form-control" [(ngModel)]="filteredStatus">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Buscar</span>
+      </div>
+      <input type="text" placeholder="Nombre restaurante" class="form-control" [(ngModel)]="filteredStatus">
+    </div>
+
     <hr>
     <div class="list-group">
       <app-restaurant-item
