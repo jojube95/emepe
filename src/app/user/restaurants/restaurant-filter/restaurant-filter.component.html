@@ -1,52 +1,39 @@
 <div class="container">
-
   <div class="row">
-
     <div class="col-md-3">
       <div class="row">
         <ul class="nav nav-pills flex-column">
           <h3>Tipo de comida</h3>
-          <li class="nav-item">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optradio" (change)="onSelectRadioButton('Todas')">Todas
-            </label>
-          </li>
-          <li *ngFor="let category of categoriesList" class="nav-item">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optradio" (change)="onSelectRadioButton(category)">{{category}}
-            </label>
-          </li>
+          <div class="custom-control custom-radio">
+            <input checked="checked" type="radio" id="customRadio2" name="customRadio" class="custom-control-input" (change)="onSelectRadioButton('Todas')">
+            <label class="custom-control-label" for="customRadio2">Todas</label>
+          </div>
+          <div *ngFor="let category of categoriesList; let index" class="custom-control custom-radio">
+            <input type="radio" [id]="index" name="customRadio" class="custom-control-input" (change)="onSelectRadioButton(category)">
+            <label class="custom-control-label" [for]="index">{{category}}</label>
+          </div>
         </ul>
       </div>
-
       <div class="row">
         <ul class="nav nav-pills flex-column">
           <h3>Filtrar</h3>
-          <li class="nav-item">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="">Option 1
-            </label>
-          </li>
-          <li class="nav-item">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="">Option 1
-            </label>
-          </li>
-          <li class="nav-item">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input" value="">Option 1
-            </label>
-          </li>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" id="check1" name="check1" class="custom-control-input">
+            <label class="custom-control-label" for="check1">Todas</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" id="check2" name="check2" class="custom-control-input">
+            <label class="custom-control-label" for="check2">Todas</label>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" id="check3" name="check3" class="custom-control-input">
+            <label class="custom-control-label" for="check3">Todas</label>
+          </div>
         </ul>
       </div>
     </div>
-
     <div class="col-md-9">
       <app-restaurant-list [restaurantList]="restaurantList"></app-restaurant-list>
     </div>
-
   </div>
-
-
 </div>
-
