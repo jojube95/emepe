@@ -9,6 +9,7 @@ import {DataStorageService} from '../../../../shared/data-storage.service';
 })
 export class RestaurantListComponent implements OnInit {
   @Input() restaurantList: Restaurant[];
+  filteredStatus = '';
 
 
   constructor(private dataStorage: DataStorageService) { }

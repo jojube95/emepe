@@ -28,6 +28,7 @@ import { AccountProfileSettingsComponent } from './user/account/account-settings
 import { AccountEmailSettingsComponent } from './user/account/account-settings/account-email-settings/account-email-settings.component';
 import { AccountPasswordSettingsComponent } from './user/account/account-settings/account-password-settings/account-password-settings.component';
 import { RestaurantFilterComponent } from './user/restaurants/restaurant-filter/restaurant-filter.component';
+import { FilterPipe } from './shared/filter.pipe';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -56,7 +57,8 @@ export const firebaseCredentials = {
     AccountProfileSettingsComponent,
     AccountEmailSettingsComponent,
     AccountPasswordSettingsComponent,
-    RestaurantFilterComponent
+    RestaurantFilterComponent,
+    FilterPipe
 
   ],
   imports: [

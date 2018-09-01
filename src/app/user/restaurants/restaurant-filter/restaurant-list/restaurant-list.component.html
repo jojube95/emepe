@@ -1,8 +1,10 @@
 <div class="row">
   <div class="col-xs-12">
+    <input type="text" [(ngModel)]="filteredStatus">
+    <hr>
     <div class="list-group">
       <app-restaurant-item
-        *ngFor="let restaurant of restaurantList; let i = index"
+        *ngFor="let restaurant of restaurantList | filter:filteredStatus:'name'; let i = index"
         [restaurant]="restaurant"
         [index]="i"></app-restaurant-item>
     </div>
