@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DataStorageService} from '../../../shared/data-storage.service';
 import {Category} from '../../../shared/category';
 import {Restaurant} from '../../../shared/restaurant';
+import {deepEqual} from 'assert';
 
 @Component({
   selector: 'app-restaurant-filter',
@@ -9,8 +10,8 @@ import {Restaurant} from '../../../shared/restaurant';
   styleUrls: ['./restaurant-filter.component.css']
 })
 export class RestaurantFilterComponent implements OnInit {
-  categoriesList: Category[];
-  selectedCategory: Category = new Category('Todas');
+  categoriesList: string[];
+  selectedCategory: string = 'Todas';
   restaurantList: Restaurant[];
 
   constructor(private dataStorageService: DataStorageService) { }
@@ -18,15 +19,15 @@ export class RestaurantFilterComponent implements OnInit {
   ngOnInit() {
     this.categoriesList = this.dataStorageService.getCategoriesList();
     this.restaurantList = this.dataStorageService.getRestaurantList();
-    console.log(this.restaurantList);
+
   }
 
-  onSelectRadioButton(category: Category){
+  onSelectRadioButton(category: string){
     this.restaurantList = this.dataStorageService.getRestaurantList();
     this.selectedCategory = category;
     let auxRestaurantList: Restaurant[] = [];
 
-    if(this.selectedCategory != {value: 'Todas'}){
+    if(this.selectedCategory != 'Todas'){
 
       for(let restaurant of this.restaurantList){
         if(restaurant.categories.includes(category)){
@@ -37,6 +38,9 @@ export class RestaurantFilterComponent implements OnInit {
       }
 
       this.restaurantList = auxRestaurantList;
+    }
+    else{
+      this.restaurantList = this.dataStorageService.getRestaurantList();
     }
 
   }

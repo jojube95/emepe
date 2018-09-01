@@ -17,9 +17,9 @@ export class DataStorageService {
 
   usersObservable: Observable<UserModel[]>;
   restaurantsObservable: Observable<Restaurant[]>;
-  categoriesObservable: Observable<Category[]>;
+  categoriesObservable: Observable<string[]>;
 
-  categoriesList: Category[];
+  categoriesList: string[];
   restaurantList: Restaurant[];
 
   categories: Observable<any[]>;
@@ -50,7 +50,7 @@ export class DataStorageService {
     this.categories = af.list('categories').valueChanges();
 
     this.categories.subscribe( categories => {
-      this.categoriesList = categories as Category[];
+      this.categoriesList = categories as string[];
     });
 
     this.restaurantsObservable.subscribe( restaurants => {
