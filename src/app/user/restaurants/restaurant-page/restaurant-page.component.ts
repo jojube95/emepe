@@ -13,6 +13,10 @@ export class RestaurantPageComponent implements OnInit {
   uid: string;
   loading = true;
 
+  showOffers = true;
+  showOpinions = false;
+  showInformation = false;
+
   constructor(private router: Router, private route: ActivatedRoute, private dataStorage: DataStorageService) { }
 
   ngOnInit() {
@@ -27,6 +31,24 @@ export class RestaurantPageComponent implements OnInit {
 
       }
     );
+  }
+
+  onClickOffers(){
+    this.showOffers = true;
+    this.showOpinions = false;
+    this.showInformation = false;
+  }
+
+  onClickOpinions(){
+    this.showOffers = false;
+    this.showOpinions = true;
+    this.showInformation = false;
+  }
+
+  onClickInformation(){
+    this.showOffers = false;
+    this.showOpinions = false;
+    this.showInformation = true;
   }
 
 }

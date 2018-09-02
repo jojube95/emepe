@@ -29,6 +29,9 @@ import { AccountPasswordSettingsComponent } from './user/account/account-setting
 import { RestaurantFilterComponent } from './user/restaurants/restaurant-filter/restaurant-filter.component';
 import { FilterPipe } from './shared/filter.pipe';
 import { RestaurantPageComponent } from './user/restaurants/restaurant-page/restaurant-page.component';
+import { RestaurantOffersComponent } from './user/restaurants/restaurant-page/restaurant-offers/restaurant-offers.component';
+import { RestaurantOpinionsComponent } from './user/restaurants/restaurant-page/restaurant-opinions/restaurant-opinions.component';
+import { RestaurantInformationComponent } from './user/restaurants/restaurant-page/restaurant-information/restaurant-information.component';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -58,7 +61,10 @@ export const firebaseCredentials = {
     AccountPasswordSettingsComponent,
     RestaurantFilterComponent,
     FilterPipe,
-    RestaurantPageComponent
+    RestaurantPageComponent,
+    RestaurantOffersComponent,
+    RestaurantOpinionsComponent,
+    RestaurantInformationComponent
 
   ],
   imports: [

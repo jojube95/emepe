@@ -1,67 +1,45 @@
-<div class="row">
-  <div class="col-xs-12">
-
-    <div *ngIf="loading">
-      <h1>Loading data</h1>
+<div class="row" style="margin-bottom: 10px">
+  <div class="row no-gutters">
+    <div class="col-auto">
+      <img [src]="restaurant.pic" class="img-thumbnail" alt="">
     </div>
+    <div class="col">
+      <div class="card-block px-2">
+        <h4 class="card-title">{{restaurant.name}}</h4>
+        <p class="card-text">{{restaurant.categories}}</p>
+        <p class="card-text">{{restaurant.location}}</p>
+        <p class="card-text">{{restaurant.rating}}</p>
 
-
-    <div *ngIf="!loading">
-      <h1>Detalles Restaurante</h1>
-
-      <img [src]="restaurant.pic" alt="">
-
-      <table class="table">
-        <thead>
-        <tr>
-          <th>Campo</th>
-          <th>Valor</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>Nombre</td>
-          <td>{{ restaurant.name}}</td>
-
-        </tr>
-        <tr>
-          <td>Email</td>
-          <td>{{ restaurant.mail}}</td>
-
-        </tr>
-        <tr>
-          <td>País</td>
-          <td>{{ restaurant.country}}</td>
-
-        </tr>
-        <tr>
-          <td>Localidad</td>
-          <td>{{ restaurant.location}}</td>
-
-        </tr>
-        <tr>
-          <td>Teléfono</td>
-          <td>{{ restaurant.phone}}</td>
-
-        </tr>
-        <tr>
-          <td>Descripción</td>
-          <td>{{ restaurant.description }}</td>
-
-        </tr>
-
-        <tr>
-          <td>Valoración</td>
-          <td>{{ restaurant.rating }}</td>
-
-        </tr>
-
-        </tbody>
-      </table>
-
-
+      </div>
     </div>
-
   </div>
 </div>
+
+
+<div class="row" style="display: flex;">
+  <div class="card text-center col-md-12" style="padding-left: 0px; padding-right: 0px">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="onClickOffers()">Ofertas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="onClickOpinions()">Opiniones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer;" (click)="onClickInformation()">Información</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <app-restaurant-offers *ngIf="showOffers" [restaurant]="restaurant"></app-restaurant-offers>
+      <app-restaurant-opinions *ngIf="showOpinions" [restaurant]="restaurant"></app-restaurant-opinions>
+      <app-restaurant-information *ngIf="showInformation" [restaurant]="restaurant"></app-restaurant-information>
+    </div>
+  </div>
+
+
+</div>
+
+
+
