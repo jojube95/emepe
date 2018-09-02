@@ -10,9 +10,9 @@
     <hr>
     <div class="list-group">
       <app-restaurant-item
-        *ngFor="let restaurant of restaurantList | filter:filteredStatus:'name'; let i = index"
+        *ngFor="let restaurant of restaurantList | filter:filteredStatus:'name';"
         [restaurant]="restaurant"
-        [index]="i"></app-restaurant-item>
+        ></app-restaurant-item>
     </div>
   </div>
 </div>

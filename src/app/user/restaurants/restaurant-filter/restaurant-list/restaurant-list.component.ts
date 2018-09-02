@@ -18,7 +18,6 @@ export class RestaurantListComponent implements OnInit {
     // this.dataStorage.getObservableRestaurants().subscribe( restaurants => {
     //   this.restaurantList = restaurants as Restaurant[];
     // });
-    console.log();
   }
 
 }

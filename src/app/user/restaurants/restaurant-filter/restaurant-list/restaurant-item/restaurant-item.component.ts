@@ -8,11 +8,12 @@ import {Restaurant} from '../../../../../shared/restaurant';
 })
 export class RestaurantItemComponent implements OnInit {
   @Input() restaurant: Restaurant;
-  @Input() index: number;
+  // @Input() uid: string;
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

@@ -80,4 +80,10 @@ export class DataStorageService {
     return this.restaurantList;
   }
 
+  getRestaurantObservableByUid(uid: string): Observable<Restaurant>{
+
+    return this.af.object('restaurants/'+uid).valueChanges() as Observable<Restaurant>;
+
+  }
+
 }

@@ -8,13 +8,13 @@ import { SignUpRestaurantComponent} from './restaurant/sign-up-restaurant/sign-u
 import { RestaurantDetailComponent} from './restaurant/restaurant-detail/restaurant-detail.component';
 import {UserMainPageComponent} from './user/user-main-page/user-main-page.component';
 import {RestaurantsComponent} from './user/restaurants/restaurants.component';
-import {UserRestaurantDetailComponent} from './user/restaurants/restaurant-detail/user-restaurant-detail.component';
 import {AccountInformationComponent} from './user/account/account-information/account-information.component';
 import {AccountSettingsComponent} from './user/account/account-settings/account-settings.component';
 import {AccountProfileSettingsComponent} from './user/account/account-settings/account-profile-settings/account-profile-settings.component';
 import {AccountEmailSettingsComponent} from './user/account/account-settings/account-email-settings/account-email-settings.component';
 import {AccountPasswordSettingsComponent} from './user/account/account-settings/account-password-settings/account-password-settings.component';
 import {RestaurantFilterComponent} from './user/restaurants/restaurant-filter/restaurant-filter.component';
+import {RestaurantPageComponent} from './user/restaurants/restaurant-page/restaurant-page.component';
 
 
 const appRoutes: Routes = [
@@ -28,7 +28,7 @@ const appRoutes: Routes = [
             {path: 'list', component: RestaurantFilterComponent, children: [
 
               ]},
-            { path: ':id', component: UserRestaurantDetailComponent },
+            { path: ':uid', component: RestaurantPageComponent },
           ]},
         { path: 'account', component: AccountInformationComponent, canActivate: [AuthGuard]},
         { path: 'accountSettings', component: AccountSettingsComponent, canActivate: [AuthGuard], children: [

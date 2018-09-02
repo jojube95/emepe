@@ -20,6 +20,7 @@ export class RestaurantFilterComponent implements OnInit {
     this.categoriesList = this.dataStorageService.getCategoriesList();
     this.restaurantList = this.dataStorageService.getRestaurantList();
 
+
   }
 
   onSelectRadioButton(category: string){

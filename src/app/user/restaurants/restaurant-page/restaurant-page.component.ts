@@ -1,29 +1,30 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Restaurant} from '../../../shared/restaurant';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {DataStorageService} from '../../../shared/data-storage.service';
 
 @Component({
-  selector: 'app-restaurant-detail',
-  templateUrl: './restaurant-detail.component.html',
-  styleUrls: ['./restaurant-detail.component.css']
+  selector: 'app-restaurant-page',
+  templateUrl: './restaurant-page.component.html',
+  styleUrls: ['./restaurant-page.component.css']
 })
-export class UserRestaurantDetailComponent implements OnInit {
+export class RestaurantPageComponent implements OnInit {
   restaurant: Restaurant;
-  id: number;
+  uid: string;
   loading = true;
 
   constructor(private router: Router, private route: ActivatedRoute, private dataStorage: DataStorageService) { }
 
   ngOnInit() {
-    console.log("User restaurant detail component init");
     this.route.params.subscribe(
       (params: Params) => {
-        this.id = +params['id'];
-        this.dataStorage.getObservableRestaurants().subscribe( restaurants => {
-          this.restaurant = restaurants[this.id];
+        this.uid = params['uid'];
+        this.dataStorage.getRestaurantObservableByUid(this.uid).subscribe( next =>{
+          this.restaurant = next as Restaurant;
           this.loading = false;
         });
+
+
       }
     );
   }
