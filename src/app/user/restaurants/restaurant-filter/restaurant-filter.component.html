@@ -31,8 +31,8 @@
             <li class="list-group-item disabled" style="background-color: #e9ecef;">Filtrar</li>
             <li class="list-group-item">
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" id="check1" name="check1" class="custom-control-input">
-                <label class="custom-control-label" for="check1">Todas</label>
+                <input #favCheck type="checkbox" id="check1" name="check1" (change)="favoriteCheckboxChanged(favCheck)" class="custom-control-input">
+                <label class="custom-control-label" for="check1">Favoritos</label>
               </div>
             </li>
             <li class="list-group-item">

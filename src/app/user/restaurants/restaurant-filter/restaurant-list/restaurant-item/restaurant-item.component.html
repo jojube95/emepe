@@ -1,5 +1,36 @@
-<a [routerLink]='["../" + restaurant.uid]' style="cursor: pointer; margin-bottom: 5px" routerLinkActive="active" class="list-group-item">
-  <div class="row">
+<!--<a [routerLink]='["../" + restaurant.uid]' style="cursor: pointer; margin-bottom: 5px" routerLinkActive="active" class="list-group-item">-->
+  <!--<div class="row">-->
+    <!--<div class="col-auto">-->
+      <!--<img [src]="restaurant.pic" [alt]="restaurant.name" class="img-repsonsive" style="max-height: 100px;">-->
+    <!--</div>-->
+    <!--<div class="col-auto">-->
+      <!--<h4 class="list-group-item-heading">{{restaurant.name}}</h4>-->
+      <!--<p class="list-group-item-text">{{restaurant.categories}}</p>-->
+      <!--<p class="list-group-item-text">{{restaurant.location}}</p>-->
+      <!--<a (click)="onFavChange()"><img  [src]="imgSrc" class="img-fluid" style="max-height: 25px;"></a>-->
+
+    <!--</div>-->
+  <!--</div>-->
+<!--</a>-->
+
+<!--<a [routerLink]='["../" + restaurant.uid]' style="cursor: pointer; margin-bottom: 5px" routerLinkActive="active" class="list-group-item">-->
+  <!--<div class="row">-->
+    <!--<div class="col-auto">-->
+      <!--<img [src]="restaurant.pic" [alt]="restaurant.name" class="img-repsonsive" style="max-height: 100px;">-->
+    <!--</div>-->
+    <!--<div class="col-auto">-->
+      <!--<h4 class="list-group-item-heading">{{restaurant.name}}</h4>-->
+      <!--<p class="list-group-item-text">{{restaurant.categories}}</p>-->
+      <!--<p class="list-group-item-text">{{restaurant.location}}</p>-->
+      <!--<a (click)="onFavChange()"><img  [src]="imgSrc" class="img-fluid" style="max-height: 25px;"></a>-->
+
+    <!--</div>-->
+  <!--</div>-->
+<!--</a>-->
+
+<div class="list-group-item">
+  <a [routerLink]='["../" + restaurant.uid]' style="cursor: pointer; margin-bottom: 5px" routerLinkActive="active">
+    <div class="row">
     <div class="col-auto">
       <img [src]="restaurant.pic" [alt]="restaurant.name" class="img-repsonsive" style="max-height: 100px;">
     </div>
@@ -7,6 +38,12 @@
       <h4 class="list-group-item-heading">{{restaurant.name}}</h4>
       <p class="list-group-item-text">{{restaurant.categories}}</p>
       <p class="list-group-item-text">{{restaurant.location}}</p>
+
+
     </div>
+    </div>
+  </a>
+  <div class="row">
+    <img  (click)="onFavChange()" [src]="imgSrc" class="img-fluid" style="max-height: 25px; cursor:pointer;">
   </div>
-</a>
+</div>

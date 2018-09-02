@@ -10,6 +10,7 @@ export class Restaurant {
   shedule: string;
   rating: number;
   categories: string[];
+  favedUsers: Object;
   pic: string;
 
 

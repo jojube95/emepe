@@ -32,6 +32,7 @@ import { RestaurantPageComponent } from './user/restaurants/restaurant-page/rest
 import { RestaurantOffersComponent } from './user/restaurants/restaurant-page/restaurant-offers/restaurant-offers.component';
 import { RestaurantOpinionsComponent } from './user/restaurants/restaurant-page/restaurant-opinions/restaurant-opinions.component';
 import { RestaurantInformationComponent } from './user/restaurants/restaurant-page/restaurant-information/restaurant-information.component';
+import {DataStorageService} from './shared/data-storage.service';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -79,7 +80,7 @@ export const firebaseCredentials = {
     BsDatepickerModule.forRoot(),
     NgbModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

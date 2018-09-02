@@ -33,6 +33,14 @@ export class RestaurantPageComponent implements OnInit {
     );
   }
 
+  addRestaurantToFavorite(){
+    this.dataStorage.addFavoriteRestaurant(this.restaurant);
+  }
+
+  removeRestaurantFromFavorite(){
+    this.dataStorage.removeFavoriteRestaurant(this.restaurant);
+  }
+
   onClickOffers(){
     this.showOffers = true;
     this.showOpinions = false;

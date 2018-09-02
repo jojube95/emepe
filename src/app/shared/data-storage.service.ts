@@ -4,8 +4,8 @@ import {Observable} from 'rxjs';
 import {UserModel} from './userModel';
 import {map} from 'rxjs/operators';
 import {Restaurant} from './restaurant';
-import {Category} from './category';
-import {FirebaseListObservable} from 'angularfire2/database-deprecated';
+import {AngularFireAuth} from 'angularfire2/auth';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class DataStorageService {
 
   categories: Observable<any[]>;
 
-  constructor(private af: AngularFireDatabase) {
+  constructor(private af: AngularFireDatabase, private afAuth: AngularFireAuth) {
     this.usersRef = this.af.list('users');
     this.usersObservable = this.usersRef.snapshotChanges().pipe(
       map(changes =>
@@ -84,6 +84,39 @@ export class DataStorageService {
 
     return this.af.object('restaurants/'+uid).valueChanges() as Observable<Restaurant>;
 
+  }
+
+  addFavoriteRestaurant(restaurant: Restaurant){
+    let userUid = this.getCurrentUser().uid;
+
+
+    firebase.database().ref().child("users/"+userUid+"/favRestaurants").child(restaurant.uid).set({
+      uid: restaurant.uid,
+      mail: restaurant.mail,
+      password: restaurant.password,
+      name: restaurant.name,
+      phone: restaurant.phone,
+      country: restaurant.country,
+      location: restaurant.location,
+      shedule: restaurant.shedule,
+      rating: restaurant.rating,
+      pic: restaurant.pic
+    });
+
+    firebase.database().ref().child("restaurants/"+restaurant.uid+"/favedUsers").child(userUid).set(true);
+
+  }
+
+  removeFavoriteRestaurant(restaurant: Restaurant){
+    let userUid = this.getCurrentUser().uid;
+
+    firebase.database().ref().child("users/" + userUid + "/favRestaurants").child(restaurant.uid).remove();
+    firebase.database().ref().child("restaurants/"+restaurant.uid+"/favedUsers").child(userUid).remove();
+
+  }
+
+  getCurrentUser() {
+    return this.afAuth.auth.currentUser;
   }
 
 }
