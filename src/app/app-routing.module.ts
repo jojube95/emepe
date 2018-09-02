@@ -14,6 +14,7 @@ import {AccountSettingsComponent} from './user/account/account-settings/account-
 import {AccountProfileSettingsComponent} from './user/account/account-settings/account-profile-settings/account-profile-settings.component';
 import {AccountEmailSettingsComponent} from './user/account/account-settings/account-email-settings/account-email-settings.component';
 import {AccountPasswordSettingsComponent} from './user/account/account-settings/account-password-settings/account-password-settings.component';
+import {RestaurantFilterComponent} from './user/restaurants/restaurant-filter/restaurant-filter.component';
 
 
 const appRoutes: Routes = [
@@ -24,6 +25,9 @@ const appRoutes: Routes = [
     { path: 'restaurant-details', component: RestaurantDetailComponent, canActivate: [AuthGuard]},
     { path: 'user', component: UserMainPageComponent, canActivate: [AuthGuard], children: [
         { path: 'restaurants', component: RestaurantsComponent, children: [
+            {path: 'list', component: RestaurantFilterComponent, children: [
+
+              ]},
             { path: ':id', component: UserRestaurantDetailComponent },
           ]},
         { path: 'account', component: AccountInformationComponent, canActivate: [AuthGuard]},

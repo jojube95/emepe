@@ -21,7 +21,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RestaurantsComponent } from './user/restaurants/restaurants.component';
 import { RestaurantListComponent } from './user/restaurants/restaurant-filter/restaurant-list/restaurant-list.component';
 import { RestaurantItemComponent } from './user/restaurants/restaurant-filter/restaurant-list/restaurant-item/restaurant-item.component';
-import {UserRestaurantDetailComponent} from './user/restaurants/restaurant-detail/user-restaurant-detail.component';
+import { UserRestaurantDetailComponent } from './user/restaurants/restaurant-detail/user-restaurant-detail.component';
 import { AccountInformationComponent } from './user/account/account-information/account-information.component';
 import { AccountSettingsComponent } from './user/account/account-settings/account-settings.component';
 import { AccountProfileSettingsComponent } from './user/account/account-settings/account-profile-settings/account-profile-settings.component';

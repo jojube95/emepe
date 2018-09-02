@@ -16,6 +16,7 @@ export class UserRestaurantDetailComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private dataStorage: DataStorageService) { }
 
   ngOnInit() {
+    console.log("User restaurant detail component init");
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
