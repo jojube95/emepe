@@ -4,6 +4,9 @@ import {UserModel} from '../../shared/userModel';
 import {Restaurant} from '../../shared/restaurant';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../../auth/auth.service';
+import {DataStorageService} from '../../shared/data-storage.service';
+import {NgSelectMultipleOption} from '@angular/forms/src/directives/select_multiple_control_value_accessor';
+import {NgSelectComponent, NgSelectModule} from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-sign-up-restaurant',
@@ -11,9 +14,15 @@ import {AuthService} from '../../auth/auth.service';
   styleUrls: ['./sign-up-restaurant.component.css']
 })
 export class SignUpRestaurantComponent implements OnInit {
-  url: '';
+  url: ''
+  categoriesSelected: string[] = [];
+  categories: string[];
 
-  constructor(private authService: AuthService) { }
+
+
+  constructor(private authService: AuthService, private dataService: DataStorageService) {
+
+  }
 
   onSignup(form: NgForm){
 
@@ -25,7 +34,26 @@ export class SignUpRestaurantComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.categories = this.dataService.getCategoriesList();
+
   }
+
+  onAddItem(selector: NgSelectComponent){
+    this.categoriesSelected = selector.itemsList.selectedItems.map(next => {
+      return next["value"];
+    });
+  }
+
+  onRemoveItem(selector: NgSelectComponent){
+    this.categoriesSelected = selector.itemsList.selectedItems.map(next => {
+      return next["value"];
+    });
+  }
+
+  onClearItem(){
+    this.categoriesSelected = [];
+  }
+
 
   onSelectFile(event) { // called each time file input changes
     if (event.target.files && event.target.files[0]) {

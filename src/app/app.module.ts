@@ -33,6 +33,7 @@ import { RestaurantOffersComponent } from './user/restaurants/restaurant-page/re
 import { RestaurantOpinionsComponent } from './user/restaurants/restaurant-page/restaurant-opinions/restaurant-opinions.component';
 import { RestaurantInformationComponent } from './user/restaurants/restaurant-page/restaurant-information/restaurant-information.component';
 import {DataStorageService} from './shared/data-storage.service';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -71,6 +72,7 @@ export const firebaseCredentials = {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgSelectModule,
     FormsModule,
     RouterModule,
     AngularFireModule.initializeApp(firebaseCredentials),
@@ -78,7 +80,7 @@ export const firebaseCredentials = {
     AngularFireAuthModule,
     CommonModule,
     BsDatepickerModule.forRoot(),
-    NgbModule
+    NgbModule,
   ],
   providers: [AuthService, AuthGuard, DataStorageService],
   bootstrap: [AppComponent]
