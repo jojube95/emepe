@@ -24,7 +24,11 @@ const appRoutes: Routes = [
     { path : 'signUp', component: SignUpComponent},
     { path : 'signIn', component: SignInComponent},
     { path: 'signUpRestaurant', component: SignUpRestaurantComponent},
-    { path: 'restaurant', component: RestaurantMainPageComponent, canActivate: [AuthGuard]},
+    { path: 'restaurant', component: RestaurantMainPageComponent, canActivate: [AuthGuard], children: [
+        { path: ':uid', component: RestaurantPageComponent, children: [
+            {path: 'information/:params', component: RestaurantInformationComponent}
+          ] },
+      ]},
     { path: 'user', component: UserMainPageComponent, canActivate: [AuthGuard], children: [
         { path: 'restaurants', component: RestaurantsComponent, children: [
             {path: 'list', component: RestaurantFilterComponent, children: [

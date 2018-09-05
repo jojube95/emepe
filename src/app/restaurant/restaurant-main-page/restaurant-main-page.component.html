@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active">
-          <a routerLink="restaurant/restaurant" class="nav-link">Restaurante</a>
+          <a [routerLink]='[restaurantLogged.uid]' class="nav-link">Restaurante</a>
         </li>
 
         <li class="nav-item">
@@ -45,7 +45,10 @@
 
   </nav>
 
-  <router-outlet></router-outlet>
+  <div class="container" style="margin-top: 10px">
+    <router-outlet></router-outlet>
+
+  </div>
 
 </div>
 
