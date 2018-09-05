@@ -86,6 +86,7 @@ export class AuthService {
         user => {
           restaurant.setRestaurantId(user.user.uid);
           firebase.database().ref().child("restaurants").child(user.user.uid).set({
+            categories: restaurant.categories,
             uid: restaurant.uid,
             mail: restaurant.mail,
             password: restaurant.password,

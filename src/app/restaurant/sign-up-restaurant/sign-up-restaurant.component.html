@@ -47,15 +47,13 @@
           <ng-select type="categori" id="categori" name="categori" #name="ngModel" ngModel #selector [items]="categories" [multiple]="true" (add)="onAddItem(selector)" (remove)="onRemoveItem(selector)" (clear)="onClearItem()" required>
 
           </ng-select>
-          <span class="help-block" *ngIf="!selector.valid">Please enter a name!</span>
+          <span class="help-block" *ngIf="!name.valid && name.touched" >Please enter a category!</span>
         </div>
 
 
-
-
-        <ul class="list-group">
-          <li *ngFor="let category of categoriesSelected" class="list-group-item">{{category}}</li>
-        </ul>
+        <!--<ul class="list-group">-->
+          <!--<li *ngFor="let category of categoriesSelected" class="list-group-item">{{category}}</li>-->
+        <!--</ul>-->
 
         <div class="form-group">
           <label>Phone</label>

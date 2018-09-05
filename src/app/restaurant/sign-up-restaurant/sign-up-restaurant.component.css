@@ -5,3 +5,11 @@ input.ng-invalid.ng-touched {
 input.ng-valid.ng-touched {
   border: 1px solid green;
 }
+
+ng-select.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+ng-select.ng-valid.ng-touched {
+  border: 1px solid green;
+}
