@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {DateUtilities} from '../../utilities/date-utilities';
-import {UserModel} from '../../shared/userModel';
 import {Restaurant} from '../../shared/restaurant';
 import {NgForm} from '@angular/forms';
 import {AuthService} from '../../auth/auth.service';
 import {DataStorageService} from '../../shared/data-storage.service';
-import {NgSelectMultipleOption} from '@angular/forms/src/directives/select_multiple_control_value_accessor';
-import {NgSelectComponent, NgSelectModule} from '@ng-select/ng-select';
+import {NgSelectComponent} from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-sign-up-restaurant',
@@ -14,7 +11,7 @@ import {NgSelectComponent, NgSelectModule} from '@ng-select/ng-select';
   styleUrls: ['./sign-up-restaurant.component.css']
 })
 export class SignUpRestaurantComponent implements OnInit {
-  url: ''
+  url: '../../../assets/img/restaurant.png';
   categoriesSelected: string[] = [];
   categories: string[];
 
@@ -63,8 +60,7 @@ export class SignUpRestaurantComponent implements OnInit {
       reader.onload = (event:any) => {
         this.url = event.target.result;
 
-      }
-
+      };
       reader.readAsDataURL(event.target.files[0]);
     }
   }
