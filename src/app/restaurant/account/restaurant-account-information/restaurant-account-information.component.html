@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>Detalles Restaurante</h1>
+
+    <div *ngIf="loading">
+
+    </div>
+
+    <div *ngIf="!loading">
+
+      <img [src]="restaurantLogged.pic" alt="">
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Campo</th>
+          <th>Valor</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Nombre</td>
+          <td>{{ restaurantLogged.name}}</td>
+
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>{{ restaurantLogged.mail}}</td>
+
+        </tr>
+        <tr>
+          <td>País</td>
+          <td>{{ restaurantLogged.country}}</td>
+
+        </tr>
+        <tr>
+          <td>Localidad</td>
+          <td>{{ restaurantLogged.location}}</td>
+
+        </tr>
+        <tr>
+          <td>Teléfono</td>
+          <td>{{ restaurantLogged.phone}}</td>
+
+        </tr>
+        <tr>
+          <td>Descripción</td>
+          <td>{{ restaurantLogged.description }}</td>
+
+        </tr>
+
+        <tr>
+          <td>Valoración</td>
+          <td>{{ restaurantLogged.rating }}</td>
+
+        </tr>
+
+        </tbody>
+      </table>
+
+
+    </div>
+
+  </div>
+</div>
