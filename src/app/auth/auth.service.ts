@@ -72,10 +72,13 @@ export class AuthService {
     this.dataStorageService.getObservableUsers().subscribe(users => {
       userLogged = users.find(i => i.mail === email);
       logged = true;
+      if(userLogged) {
+
+        this.signinUser(email, password);
+
+      }
 
     });
-
-    this.signinUser(email, password);
 
 
   }
@@ -129,7 +132,7 @@ export class AuthService {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         response => {
-          this.router.navigate(['/restaurant-details']);
+          this.router.navigate(['/restaurant']);
           firebase.auth().currentUser.getIdToken()
             .then(
               (token: string) => this.token = token,

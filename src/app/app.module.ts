@@ -34,6 +34,7 @@ import { RestaurantOpinionsComponent } from './user/restaurants/restaurant-page/
 import { RestaurantInformationComponent } from './user/restaurants/restaurant-page/restaurant-information/restaurant-information.component';
 import {DataStorageService} from './shared/data-storage.service';
 import {NgSelectModule} from '@ng-select/ng-select';
+import { RestaurantMainPageComponent } from './restaurant/restaurant-main-page/restaurant-main-page.component';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -66,7 +67,8 @@ export const firebaseCredentials = {
     RestaurantPageComponent,
     RestaurantOffersComponent,
     RestaurantOpinionsComponent,
-    RestaurantInformationComponent
+    RestaurantInformationComponent,
+    RestaurantMainPageComponent
 
   ],
   imports: [

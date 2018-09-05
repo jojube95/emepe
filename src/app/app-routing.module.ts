@@ -16,6 +16,7 @@ import {AccountPasswordSettingsComponent} from './user/account/account-settings/
 import {RestaurantFilterComponent} from './user/restaurants/restaurant-filter/restaurant-filter.component';
 import {RestaurantPageComponent} from './user/restaurants/restaurant-page/restaurant-page.component';
 import {RestaurantInformationComponent} from './user/restaurants/restaurant-page/restaurant-information/restaurant-information.component';
+import {RestaurantMainPageComponent} from './restaurant/restaurant-main-page/restaurant-main-page.component';
 
 
 const appRoutes: Routes = [
@@ -23,7 +24,7 @@ const appRoutes: Routes = [
     { path : 'signUp', component: SignUpComponent},
     { path : 'signIn', component: SignInComponent},
     { path: 'signUpRestaurant', component: SignUpRestaurantComponent},
-    { path: 'restaurant-details', component: RestaurantDetailComponent, canActivate: [AuthGuard]},
+    { path: 'restaurant', component: RestaurantMainPageComponent, canActivate: [AuthGuard]},
     { path: 'user', component: UserMainPageComponent, canActivate: [AuthGuard], children: [
         { path: 'restaurants', component: RestaurantsComponent, children: [
             {path: 'list', component: RestaurantFilterComponent, children: [
