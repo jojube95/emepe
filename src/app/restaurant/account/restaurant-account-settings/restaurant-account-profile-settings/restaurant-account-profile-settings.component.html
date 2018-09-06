@@ -1,0 +1,71 @@
+<div class="row">
+
+  <div *ngIf="loading" class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    Loading
+  </div>
+
+  <div *ngIf="!loading" class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+    <h1>Perfil</h1>
+    <hr>
+    <form (ngSubmit)="onUpdate(f)" #f="ngForm">
+
+      <div class="form-group">
+        <label>Profile Picture</label>
+        <br>
+        <img class="img-thumbnail" [src]="restaurantLogged.pic" height="200" width="200"> <br/>
+        <input type='file' (change)="onSelectFile($event)">
+      </div>
+
+
+      <div class="form-group">
+        <label>Name</label>
+        <input [(ngModel)]="restaurantLogged.name" type="name" id="name" name="name" #name="ngModel" class="form-control" required>
+        <span class="help-block" *ngIf="!name.valid && name.touched">Please enter a name!</span>
+      </div>
+
+      <!--CATEGORIES-->
+      <div class="form-group">
+        <label>Categorias</label>
+        <ng-select type="categori" id="categori" name="categori" #name="ngModel" ngModel #selector [items]="categories" [multiple]="true" (add)="onAddItem(selector)" (remove)="onRemoveItem(selector)" (clear)="onClearItem()" required>
+
+        </ng-select>
+        <span class="help-block" *ngIf="!name.valid && name.touched" >Please enter a category!</span>
+
+        <ul class="list-group">
+        <li *ngFor="let category of categoriesSelected" class="list-group-item">{{category}}</li>
+        </ul>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <input [(ngModel)]="restaurantLogged.description" type="text" id="description" name="description" #description="ngModel" class="form-control" required>
+        <span class="help-block" *ngIf="!description.valid && description.touched">Please enter a description!</span>
+      </div>
+
+      <div class="form-group">
+        <label>Country</label>
+        <input [(ngModel)]="restaurantLogged.country" type="country" id="country" name="country" #country="ngModel" class="form-control" required>
+        <span class="help-block" *ngIf="!country.valid && country.touched">Please enter a country!</span>
+      </div>
+
+      <div class="form-group">
+        <label>Location</label>
+        <input [(ngModel)]="restaurantLogged.location" type="location" id="location" name="location" #location="ngModel" class="form-control" required>
+        <span class="help-block" *ngIf="!location.valid && location.touched">Please enter a location!</span>
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label>
+        <input [(ngModel)]="restaurantLogged.phone" type="phone" id="phone" name="phone" #phone="ngModel" class="form-control" minlength="9" pattern="^[0-9]*$" required>
+        <span class="help-block" *ngIf="!phone.valid && phone.touched">Please enter a valid phone!</span>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid || !f.dirty">Update profile</button>
+
+    </form>
+  </div>
+</div>
+
+

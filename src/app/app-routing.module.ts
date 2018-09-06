@@ -18,6 +18,10 @@ import {RestaurantPageComponent} from './user/restaurants/restaurant-page/restau
 import {RestaurantInformationComponent} from './user/restaurants/restaurant-page/restaurant-information/restaurant-information.component';
 import {RestaurantMainPageComponent} from './restaurant/restaurant-main-page/restaurant-main-page.component';
 import {RestaurantAccountInformationComponent} from './restaurant/account/restaurant-account-information/restaurant-account-information.component';
+import {RestaurantAccountSettingsComponent} from './restaurant/account/restaurant-account-settings/restaurant-account-settings.component';
+import {RestaurantAccountProfileSettingsComponent} from './restaurant/account/restaurant-account-settings/restaurant-account-profile-settings/restaurant-account-profile-settings.component';
+import {RestaurantAccountEmailSettingsComponent} from './restaurant/account/restaurant-account-settings/restaurant-account-email-settings/restaurant-account-email-settings.component';
+import {RestaurantAccountPasswordSettingsComponent} from './restaurant/account/restaurant-account-settings/restaurant-account-password-settings/restaurant-account-password-settings.component';
 
 
 const appRoutes: Routes = [
@@ -26,7 +30,12 @@ const appRoutes: Routes = [
     { path : 'signIn', component: SignInComponent},
     { path: 'signUpRestaurant', component: SignUpRestaurantComponent},
     { path: 'restaurant', component: RestaurantMainPageComponent, canActivate: [AuthGuard], children: [
-        {path: 'accountInformation', component: RestaurantAccountInformationComponent},
+        { path: 'accountInformation', component: RestaurantAccountInformationComponent},
+        { path: 'accountSettings', component: RestaurantAccountSettingsComponent, canActivate: [AuthGuard], children: [
+            { path: 'profile', component: RestaurantAccountProfileSettingsComponent, canActivate: [AuthGuard]},
+            { path: 'email', component: RestaurantAccountEmailSettingsComponent, canActivate: [AuthGuard]},
+            { path: 'password', component: RestaurantAccountPasswordSettingsComponent, canActivate: [AuthGuard]}
+          ]},
         { path: ':uid', component: RestaurantPageComponent, children: [
             {path: 'information/:params', component: RestaurantInformationComponent}
           ] },

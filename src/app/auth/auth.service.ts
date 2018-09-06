@@ -57,6 +57,7 @@ export class AuthService {
   }
 
   signIn(email: string, password: string){
+    //PROBLEMO: USER AND RESTAURANT RELOGGED WHEN ITS CURRENTLY LOGGED, BECAUSE ACTIVATES SUBSCRIBE WHEN THEY CHANGE THEIR PROFILE
     let userLogged: UserModel;
     let restaurantLogged: Restaurant;
     let logged = false;
@@ -132,6 +133,7 @@ export class AuthService {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         response => {
+          alert("pillat");
           this.router.navigate(['/restaurant']);
           firebase.auth().currentUser.getIdToken()
             .then(

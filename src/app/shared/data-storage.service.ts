@@ -64,6 +64,12 @@ export class DataStorageService {
 
   }
 
+  updateRestaurantProfile(restaurant: Restaurant){
+    this.af.object('restaurants/' + restaurant.uid)
+      .update(restaurant);
+
+  }
+
   getObservableUsers() {
     return this.usersObservable;
   }

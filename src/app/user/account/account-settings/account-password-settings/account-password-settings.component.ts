@@ -5,7 +5,6 @@ import {UserModel} from '../../../../shared/userModel';
 import {DateUtilities} from '../../../../utilities/date-utilities';
 import {AuthService} from '../../../../auth/auth.service';
 import {DataStorageService} from '../../../../shared/data-storage.service';
-import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-account-password-settings',
@@ -18,8 +17,7 @@ export class AccountPasswordSettingsComponent implements OnInit {
   userLogged: UserModel;
   dateUtilities: DateUtilities = new DateUtilities();
 
-  constructor(private authService: AuthService, private dataStorageService: DataStorageService, private router: Router,
-              private route: ActivatedRoute) { }
+  constructor(private authService: AuthService, private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
     this.userAuth = this.authService.getCurrentUser();
