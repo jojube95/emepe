@@ -4,6 +4,7 @@ import {NgForm} from '@angular/forms';
 import {AuthService} from '../../auth/auth.service';
 import {DataStorageService} from '../../shared/data-storage.service';
 import {NgSelectComponent} from '@ng-select/ng-select';
+import {Offer} from '../../shared/offer';
 
 @Component({
   selector: 'app-sign-up-restaurant',
@@ -22,10 +23,15 @@ export class SignUpRestaurantComponent implements OnInit {
   }
 
   onSignup(form: NgForm){
+    let offer1: Offer = new Offer('TestOffer1', 1.5, 'TestDescription1', false, false, false, false);
+    let offer2: Offer = new Offer('TestOffer2', 1.5, 'TestDescription2', false, false, false, false);
+    let offer3: Offer = new Offer('TestOffer3', 1.5, 'TestDescription3', false, false, false, false);
+    let offer4: Offer = new Offer('TestOffer4', 1.5, 'TestDescription4', false, false, false, false);
+    let offer5: Offer = new Offer('TestOffer5', 1.5, 'TestDescription5', false, false, false, false);
 
     const restaurant = new Restaurant(form.value.email, form.value.password, form.value.name,
       form.value.phone, form.value.country, form.value.location, form.value.description,
-      '', 0.0, this.categoriesSelected, this.url);
+      '', 0.0, this.categoriesSelected, [offer1, offer2, offer3, offer4, offer5] ,this.url);
 
     this.authService.singUpRestaurant(restaurant);
   }

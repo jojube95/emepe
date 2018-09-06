@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-xs-10">
+    <app-offer-edit></app-offer-edit>
+    <hr>
+    <ul class="list-group">
+      <a
+        class="list-group-item"
+        style="cursor: pointer"
+        *ngFor="let offer of restaurantLogged.offers; let i = index"
+        (click)="onEditItem(i)"
+      >
+        {{ offer.name }} ({{ offer.price }})
+      </a>
+    </ul>
+  </div>
+</div>
+

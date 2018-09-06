@@ -90,6 +90,7 @@ export class AuthService {
         user => {
           restaurant.setRestaurantId(user.user.uid);
           firebase.database().ref().child("restaurants").child(user.user.uid).set({
+            offers: restaurant.offers,
             categories: restaurant.categories,
             uid: restaurant.uid,
             mail: restaurant.mail,
@@ -133,7 +134,6 @@ export class AuthService {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(
         response => {
-          alert("pillat");
           this.router.navigate(['/restaurant']);
           firebase.auth().currentUser.getIdToken()
             .then(

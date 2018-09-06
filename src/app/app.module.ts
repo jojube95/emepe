@@ -40,6 +40,8 @@ import { RestaurantAccountSettingsComponent } from './restaurant/account/restaur
 import { RestaurantAccountEmailSettingsComponent } from './restaurant/account/restaurant-account-settings/restaurant-account-email-settings/restaurant-account-email-settings.component';
 import { RestaurantAccountPasswordSettingsComponent } from './restaurant/account/restaurant-account-settings/restaurant-account-password-settings/restaurant-account-password-settings.component';
 import { RestaurantAccountProfileSettingsComponent } from './restaurant/account/restaurant-account-settings/restaurant-account-profile-settings/restaurant-account-profile-settings.component';
+import { OffersListComponent } from './restaurant/offers-list/offers-list.component';
+import { OfferEditComponent } from './restaurant/offers-list/offer-edit/offer-edit.component';
 
 export const firebaseCredentials = {
   apiKey: 'AIzaSyA2RfdXx_h3pDyUAHHUVNnnieuIsaXQgKs',
@@ -78,7 +80,9 @@ export const firebaseCredentials = {
     RestaurantAccountSettingsComponent,
     RestaurantAccountEmailSettingsComponent,
     RestaurantAccountPasswordSettingsComponent,
-    RestaurantAccountProfileSettingsComponent
+    RestaurantAccountProfileSettingsComponent,
+    OffersListComponent,
+    OfferEditComponent
 
   ],
   imports: [
